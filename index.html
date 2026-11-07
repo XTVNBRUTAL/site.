@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090407">
+  <meta name="description" content="Tuan Anh Store - trang chủ công khai và hệ thống quản lý License Key, API dành cho Admin.">
+  <title>TUAN ANH STORE — Gaming System</title>
+  <link rel="icon" type="image/webp" href="/assets/tuan-anh-store-avatar.webp">
+  <link rel="stylesheet" href="/styles.css?v=public-v37-advanced-license-generator">
+  <script src="/app.js?v=public-v37-advanced-license-generator" defer></script>
+</head>
+<body class="auth-locked theme-red">
+  <div class="heart-rain" aria-hidden="true">
+    <span>♥</span><span>♡</span><span>♥</span><span>♥</span><span>♡</span><span>♥</span>
+    <span>♥</span><span>♡</span><span>♥</span><span>♥</span><span>♡</span><span>♥</span>
+    <span>♥</span><span>♡</span><span>♥</span><span>♥</span><span>♡</span><span>♥</span>
+    <span>♥</span><span>♡</span><span>♥</span><span>♥</span>
+  </div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Tuan Anh Store">
+      <img class="brand-mark-image" src="/assets/tuan-anh-store-avatar.webp" alt="Logo anime đỏ đen Tuấn Anh Store" width="256" height="256">
+      <span class="brand-copy"><b>TUAN ANH <em>STORE</em></b><small>GAMING SYSTEM</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Điều hướng">
+      <button class="nav-item active" data-page="home"><span>⌂</span> Trang chủ</button>
+      <button class="nav-item" data-page="keys"><span>⚿</span> Quản lý Key</button>
+      <button class="nav-item" data-page="api"><span>⌘</span> API Server</button>
+      <button class="nav-item" data-page="settings"><span>⚙</span> Cài đặt</button>
+      <button class="nav-item admin-only hidden" data-page="activity"><span>◷</span> Hoạt động</button>
+      <button class="nav-item admin-only hidden" data-page="lua-studio"><span>⌘</span> Lua Studio V36</button>
+    </nav>
+    <div class="top-actions">
+      <span class="admin-state"><i></i><span id="adminLabel">Chưa đăng nhập</span></span>
+      <button class="button button-primary button-small" id="loginOpen">Đăng nhập</button>
+      <button class="button button-ghost button-small hidden" id="logoutButton">Đăng xuất</button>
+    </div>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Mở menu">☰</button>
+  </header>
+
+  <main class="shell">
+    <section class="page active" id="page-home">
+      <div class="floating-particles" aria-hidden="true">
+        <span>♥</span><span>✦</span><span>♥</span><span>✧</span><span>♥</span><span>✦</span>
+        <span>♥</span><span>✧</span><span>♥</span><span>✦</span><span>♥</span><span>✧</span>
+      </div>
+
+      <section class="hero hero-showcase">
+        <img class="hero-brand-art" src="/assets/tuan-anh-store-logo.webp" alt="Logo anime đỏ đen Tuấn Anh Store" width="1254" height="1254" fetchpriority="high">
+        <div class="eyebrow"><span class="spark">✧</span> TUAN ANH STORE · GAMING SYSTEM</div>
+        <h1>LICENSE KEY <span>&amp; API SYSTEM</span></h1>
+        <p>Trang chủ TUAN ANH STORE mở công khai cho mọi người. Khu vực quản lý License Key, thiết bị và API được bảo vệ bằng đăng nhập Admin.</p>
+        <div class="hero-actions">
+          <button class="button button-outline" data-scroll="featureSection"><span class="button-symbol gold">★</span> Tổng quan hệ thống</button>
+          <button class="button button-primary" data-go="keys"><span class="button-symbol">ϟ</span> Quản lý Key</button>
+          <button class="button button-outline" data-go="api"><span class="button-symbol">⌘</span> API Server</button>
+          <button class="button button-text" data-go="settings"><span class="button-symbol">♧</span> Cài đặt</button>
+        </div>
+      </section>
+
+      <section class="public-share-card glass-panel hidden" id="publicShareCard" aria-labelledby="publicShareTitle">
+        <div class="share-card-icon" aria-hidden="true">↗</div>
+        <div class="share-card-main">
+          <div class="section-kicker">ADMIN ONLY · PRIVATE INVITE LINK</div>
+          <h2 id="publicShareTitle">CHIA SẺ WEBSITE CỦA BẠN</h2>
+          <p>Khu vực riêng của Admin. Chọn link tạm thời để chia sẻ nhanh hoặc tên miền cố định để chạy 24/7 trên VPS.</p>
+          <section class="link-mode-card temporary-link-card" aria-labelledby="temporaryShareTitle">
+            <div class="link-mode-heading">
+              <div><div class="section-kicker">QUICK TUNNEL · LINK TẠM THỜI</div><h3 id="temporaryShareTitle">TẠO LINK CHIA SẺ NGAY</h3></div>
+              <span class="mode-chip temporary-chip">THAY ĐỔI KHI TẠO LẠI</span>
+            </div>
+            <p class="link-mode-description">Tạo link HTTPS ngẫu nhiên để gửi cho người khác. Link chỉ hoạt động khi máy tính/VPS chạy website và Cloudflare Tunnel chưa bị dừng.</p>
+            <div class="share-status-row"><span class="share-status-dot" id="temporaryShareDot"></span><span id="temporaryShareStatus" role="status" aria-live="polite">Chưa có link tạm thời.</span><span class="share-status-note" id="temporaryShareUpdated"></span></div>
+            <div class="share-link-row temporary-share-link-row">
+              <input id="temporaryShareUrl" type="url" readonly spellcheck="false" placeholder="Chưa tạo link tạm thời" aria-label="Link tạm thời công khai">
+              <button class="button button-primary" id="copyTemporaryShare" type="button" disabled>⧉ Sao chép</button>
+            </div>
+            <div class="share-actions temporary-share-actions">
+              <button class="button button-primary button-small" id="createTemporaryShare" type="button">♥ Tạo link tạm thời</button>
+              <button class="button button-outline button-small" id="refreshTemporaryShare" type="button">↻ Kiểm tra</button>
+              <button class="button button-danger button-small" id="stopTemporaryShare" type="button" disabled>■ Ngắt link</button>
+              <a class="share-open-link hidden" id="openTemporaryShare" href="#" target="_blank" rel="noopener noreferrer">Mở link ↗</a>
+            </div>
+            <small class="share-link-hint" id="temporaryShareHint">Link Quick Tunnel có thể đổi sau khi khởi động lại. Muốn dùng khi tắt máy cá nhân, hãy tạo link tên miền cố định bên dưới và chạy website trên VPS.</small>
+            <details class="share-debug hidden" id="temporaryShareLogPanel"><summary>Chi tiết trạng thái link tạm thời</summary><pre id="temporaryShareLog"></pre></details>
+          </section>
+          <div class="domain-mode-label"><div class="section-kicker">CUSTOM DOMAIN · HOSTING 24/7</div><h3>LINK TÊN MIỀN CỐ ĐỊNH</h3><p>Chạy website + Named Tunnel trên VPS luôn bật để bạn và khách truy cập cùng một địa chỉ, kể cả khi tắt máy cá nhân.</p></div>
+          <form class="domain-config-form" id="publicDomainForm">
+            <label class="field-label" for="publicDomainInput">TÊN MIỀN RIÊNG CỦA BẠN</label>
+            <div class="domain-config-row">
+              <input class="text-input" id="publicDomainInput" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="store.tenmiencuaban.com" maxlength="253" aria-describedby="publicDomainHelp" required>
+              <button class="button button-primary button-small" id="savePublicDomain" type="submit">Lưu tên miền</button>
+            </div>
+            <small id="publicDomainHelp">Nhập hostname thuộc tên miền của bạn. Khi bấm Lưu tên miền, website sẽ tự tạo/cập nhật DNS CNAME và Published Route bằng Cloudflare API.</small>
+            <details class="domain-setup-guide" open>
+              <summary>Kết nối Cloudflare một lần — các ID còn lại tự tìm</summary>
+              <p>Để tự tìm Zone, lấy Account ID, tạo Named Tunnel, lấy Tunnel Token và cấu hình DNS/route, website chỉ cần một API Token có quyền phù hợp.</p>
+              <label class="field-label" for="cloudflareApiTokenInput">CLOUDFLARE API TOKEN</label>
+              <div class="domain-config-row">
+                <input class="text-input" id="cloudflareApiTokenInput" type="password" autocomplete="new-password" spellcheck="false" placeholder="Dán API Token Cloudflare (chỉ lưu trên máy chủ)" maxlength="512">
+                <button class="button button-primary button-small" id="saveCloudflareApiToken" type="button">Lưu token an toàn</button>
+              </div>
+              <small id="cloudflareTokenStatus" role="status">Chưa lưu API Token. Hãy thêm domain vào Cloudflare và tạo API Token một lần.</small>
+              <ol>
+                <li>Bạn phải sở hữu tên miền, thêm domain vào Cloudflare và hoàn tất đổi nameserver để Zone ở trạng thái Active.</li>
+                <li>Trong Cloudflare → My Profile → API Tokens → Create Token → Create Custom Token.</li>
+                <li>Cấp đúng quyền: <strong>Zone → Zone → Read</strong>; <strong>Zone → DNS → Read</strong> và <strong>Zone → DNS → Write</strong> (một số màn hình có thể ghi Edit); <strong>Account → Cloudflare Tunnel → Read</strong> và <strong>Account → Cloudflare Tunnel → Write</strong> (một số màn hình cũ có thể ghi Edit). Giới hạn token vào Zone/Account của bạn.</li>
+                <li>Dán API Token vào ô trên và bấm <strong>Lưu token an toàn</strong>. Server xác minh và lưu token riêng, không gửi token trở lại trình duyệt. Khi cấu hình lần đầu trên VPS, hãy mở trang Admin qua SSH port-forward.</li>
+                <li>Từ lần sau, chỉ cần nhập hostname bạn sở hữu và bấm <strong>Lưu tên miền</strong>. Website sẽ tự tìm Zone, tạo/tái sử dụng Tunnel, lấy Tunnel Token, cấu hình Published Route và DNS CNAME.</li>
+              </ol>
+              <small>Không gửi token qua chat hoặc cho người khác. Nếu token lộ, hãy thu hồi và tạo token mới trong Cloudflare.</small>
+              <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer">Mở Cloudflare API Tokens ↗</a>
+            </details>
+          </form>
+          <div class="share-status-row"><span class="share-status-dot" id="publicShareDot"></span><span id="publicShareStatus" role="status" aria-live="polite">Đang kiểm tra đường dẫn công khai...</span><span class="share-status-note" id="publicShareUpdated"></span></div>
+          <div class="share-link-row">
+            <input id="publicShareUrl" type="url" readonly spellcheck="false" placeholder="Đang chờ link website..." aria-label="Đường dẫn website công khai">
+            <button class="button button-primary" id="copyPublicShare" type="button" disabled>⧉ Sao chép link</button>
+          </div>
+          <div class="share-card-foot"><span>✓ Trang chủ cho phép khách truy cập · Khu vực Admin vẫn cần đăng nhập</span><div class="share-actions"><button class="button button-primary button-small" id="createPublicShare" type="button">✦ Kiểm tra và lấy link</button><button class="button button-outline button-small" id="refreshPublicShare" type="button">↻ Kiểm tra link</button><a class="share-open-link hidden" id="openPublicShare" href="#" target="_blank" rel="noopener noreferrer">Mở website ↗</a></div></div>
+          <small class="share-link-hint" id="publicShareHint">Tên miền đã lưu sẽ xuất hiện ở đây. Để chạy 24/7, hãy đặt website và Named Tunnel trên VPS luôn bật.</small>
+          <details class="share-debug hidden" id="publicShareLogPanel"><summary>Chi tiết lỗi kết nối</summary><pre id="publicShareLog"></pre></details>
+        </div>
+      </section>
+
+      <section class="stats-strip" aria-label="Thống kê License Key">
+        <article class="metric metric-purple"><strong id="statTotal">—</strong><small>TỔNG LICENSE KEY</small></article>
+        <article class="metric metric-gold"><strong id="statActive">—</strong><small>KEY ĐANG HOẠT ĐỘNG</small></article>
+        <article class="metric metric-green"><strong id="statDevices">—</strong><small>THIẾT BỊ ĐÃ KÍCH HOẠT</small></article>
+        <article class="metric metric-blue"><strong id="statBanned">—</strong><small>KEY ĐANG BỊ BAN</small></article>
+      </section>
+
+      <section class="content-section showcase-section" id="featureSection">
+        <div class="section-heading showcase-heading">
+          <div><div class="section-kicker">✦ CONTROL CENTER</div><h2>QUẢN LÝ & KIỂM SOÁT KEY</h2><p>Mọi công cụ quan trọng nằm trong một giao diện duy nhất.</p></div>
+          <span class="live-chip"><i></i> SERVER READY</span>
+        </div>
+        <div class="showcase-grid">
+          <button class="showcase-card" data-go="keys">
+            <div class="showcase-card-head"><span class="showcase-avatar avatar-purple">⌁</span><span class="showcase-card-title"><b>LICENSE MANAGER</b><small>KEY CONTROL</small></span><span class="mini-status">● ONLINE</span></div>
+            <div class="showcase-rating"><span>✦ ✦ ✦ ✦ ✦</span><small>TẠO · BAN · MỞ BAN · XÓA KEY</small></div>
+            <div class="preview-window preview-keys"><div class="preview-toolbar"><i></i><i></i><i></i><span>LICENSE / OVERVIEW</span></div><div class="preview-content"><div class="preview-side"><b></b><b></b><b></b><b></b></div><div class="preview-main"><div class="preview-line wide"></div><div class="preview-line medium"></div><div class="preview-table"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="preview-line short"></div></div></div></div>
+            <span class="showcase-card-foot">Mở bảng quản lý key <b>↗</b></span>
+          </button>
+          <button class="showcase-card" data-go="keys">
+            <div class="showcase-card-head"><span class="showcase-avatar avatar-green">◈</span><span class="showcase-card-title"><b>DEVICE MANAGER</b><small>DEVICE CONTROL</small></span><span class="mini-status">● ACTIVE</span></div>
+            <div class="showcase-rating"><span>✦ ✦ ✦ ✦ ✦</span><small>GIỚI HẠN & QUẢN LÝ THIẾT BỊ</small></div>
+            <div class="preview-window preview-devices"><div class="preview-toolbar"><i></i><i></i><i></i><span>DEVICE / SESSIONS</span></div><div class="device-preview-row"><span class="device-dot"></span><span><b>DEVICE-01</b><small>Windows · Active</small></span><em>CONNECTED</em></div><div class="device-preview-row"><span class="device-dot device-dot-blue"></span><span><b>DEVICE-02</b><small>Windows · Active</small></span><em>CONNECTED</em></div><div class="device-preview-row muted-row"><span class="device-dot device-dot-pink"></span><span><b>DEVICE-03</b><small>Slot available</small></span><em>AVAILABLE</em></div></div>
+            <span class="showcase-card-foot">Xem thiết bị đã kích hoạt <b>↗</b></span>
+          </button>
+          <button class="showcase-card" data-go="api">
+            <div class="showcase-card-head"><span class="showcase-avatar avatar-blue">⌘</span><span class="showcase-card-title"><b>API SERVER</b><small>DEVELOPER CONNECTION</small></span><span class="mini-status">● READY</span></div>
+            <div class="showcase-rating"><span>✦ ✦ ✦ ✦ ✦</span><small>VERIFY KEY QUA HTTP API</small></div>
+            <div class="preview-window preview-api"><div class="preview-toolbar"><i></i><i></i><i></i><span>POST /API/VERIFY</span></div><div class="api-code-line"><span>POST</span><b>/api/verify</b></div><div class="api-code-line code-dim">{ "key": "TAS-••••" }</div><div class="api-code-line code-dim">{ "deviceId": "PC-001" }</div><div class="api-success">✓ &nbsp; status: <b>valid</b></div></div>
+            <span class="showcase-card-foot">Xem hướng dẫn kết nối API <b>↗</b></span>
+          </button>
+        </div>
+      </section>
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>BUILT FOR CONTROL <b>●</b></span></footer>
+    </section>
+
+    <section class="page" id="page-keys">
+      <div class="page-heading"><div><div class="section-kicker">LICENSE CONTROL</div><h1>QUẢN LÝ <span>KEY</span></h1><p>Tạo key không giới hạn cố định, theo dõi thiết bị và quản lý trạng thái.</p></div><button class="button button-primary" id="createKeyOpen">＋ Tạo Key mới</button></div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="keySearch" type="search" placeholder="Tìm theo tên hoặc mã key..."></label>
+        <select id="statusFilter" aria-label="Lọc trạng thái"><option value="all">Tất cả trạng thái</option><option value="active">Đang hoạt động</option><option value="banned">Đã ban</option><option value="expired">Hết hạn</option></select>
+        <button class="button button-outline button-small" id="refreshKeys">↻ Làm mới</button>
+      </div>
+      <div class="table-card">
+        <div class="table-title"><div><b>DANH SÁCH LICENSE</b><small id="keyCountLabel">0 key</small></div><span class="table-note">DỮ LIỆU LƯU TRÊN SERVER</span></div>
+        <div class="table-wrap"><table><thead><tr><th>TÊN / MÃ KEY</th><th>TRẠNG THÁI</th><th>THIẾT BỊ</th><th>HẾT HẠN</th><th>THAO TÁC</th></tr></thead><tbody id="keysTable"><tr><td colspan="5" class="empty-cell">Đăng nhập admin để xem danh sách key.</td></tr></tbody></table></div>
+      </div>
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>LICENSE CONTROL</span></footer>
+    </section>
+
+    <section class="page" id="page-api">
+      <div class="page-heading"><div><div class="section-kicker">DEVELOPER CONNECTION</div><h1>API <span>SERVER</span></h1><p>Endpoint xác thực key công khai, endpoint quản trị được bảo vệ bằng phiên admin.</p></div><span class="server-badge"><i></i> PUBLIC API</span></div>
+      <div class="api-status-card"><div class="api-orb">⌘</div><div class="api-status-copy"><b>LICENSE VERIFICATION API</b><small id="apiHealthText">Đang kiểm tra kết nối đến server...</small></div><span class="live-chip api-live-chip" id="apiLiveStatus"><i></i><span>ĐANG KIỂM TRA</span></span><button class="button button-outline button-small" id="refreshApiStatus" type="button">↻ Kiểm tra</button></div>
+      <div class="api-grid">
+        <article class="panel-card"><div class="panel-kicker">PUBLIC ENDPOINT</div><h3>Kiểm tra License Key</h3><p>Ứng dụng gửi mã key cùng ID thiết bị. Server trả về trạng thái valid, banned, expired hoặc device_limit.</p><div class="endpoint"><span>POST</span><code id="verifyEndpoint">/api/verify</code><button class="copy-button" data-copy="/api/verify">COPY</button></div><div class="code-head"><span>REQUEST BODY</span><button class="copy-button" data-copy='{"key":"TAS-YOUR-KEY","deviceId":"DEVICE-001","application":"TA-STORE-VN"}'>COPY JSON</button></div><pre><code>{
+  "key": "TAS-YOUR-KEY",
+  "deviceId": "DEVICE-001",
+  "application": "TA-STORE-VN"
+}</code></pre></article>
+        <article class="panel-card"><div class="panel-kicker">EXAMPLE RESPONSE</div><h3>Key hợp lệ</h3><p>Khi key còn hạn, không bị ban và thiết bị nằm trong giới hạn, API trả về:</p><pre><code>{
+  "ok": true,
+  "status": "valid",
+  "keyName": "VIP 30 DAYS",
+  "devicesUsed": 1,
+  "maxDevices": 0,
+  "deviceLimit": "unlimited"
+}</code></pre><div class="hint-box"><b>maxDevices = 0</b><span>Không giới hạn số thiết bị cho key đó.</span></div></article>
+      </div>
+      <div class="api-tools-grid">
+        <article class="panel-card api-test-card">
+          <div class="panel-kicker">LIVE API TEST</div><h3>Thử xác thực License Key thật</h3>
+          <p>Gửi request trực tiếp tới <code>/api/verify</code>. Nếu key hợp lệ, server sẽ ghi nhận thiết bị này vào danh sách kích hoạt.</p>
+          <form id="apiTestForm" class="api-test-form">
+            <label class="field-label" for="apiTestKey">LICENSE KEY</label>
+            <input class="text-input" id="apiTestKey" type="text" placeholder="Dán key cần kiểm tra" autocomplete="off" required>
+            <label class="field-label" for="apiTestApplication">ỨNG DỤNG</label>
+            <input class="text-input" id="apiTestApplication" type="text" value="TA-STORE-VN" maxlength="80" required>
+            <label class="field-label" for="apiTestDevice">DEVICE ID</label>
+            <input class="text-input" id="apiTestDevice" type="text" maxlength="200" value="TUAN-ANH-TEST-DEVICE" required>
+            <button class="button button-primary" type="submit" id="apiTestSubmit">▶ Gửi request kiểm tra</button>
+          </form>
+          <div class="api-result-head"><b>KẾT QUẢ SERVER</b><span id="apiTestHttpStatus">Chưa gửi request</span></div>
+          <pre class="api-result" id="apiTestResult" aria-live="polite">Response sẽ hiển thị tại đây.</pre>
+        </article>
+        <article class="panel-card api-config-card">
+          <div class="panel-kicker">CONNECTION SETTINGS</div><h3>Kết nối ứng dụng / website khác</h3>
+          <p>Chỉ mở bind LAN khi thiết bị khác cần truy cập API. CORS chỉ áp dụng cho ứng dụng chạy trong trình duyệt; app desktop/game gọi HTTP trực tiếp không cần CORS.</p>
+          <form id="apiConfigForm" class="api-config-form">
+            <label class="field-label" for="apiBindHost">PHẠM VI SERVER</label>
+            <select class="text-input" id="apiBindHost">
+              <option value="127.0.0.1">Chỉ máy này (localhost)</option>
+              <option value="0.0.0.0">Cho phép thiết bị khác trong mạng LAN</option>
+            </select>
+            <label class="field-label" for="apiAllowedOrigins">CORS ALLOWED ORIGINS</label>
+            <textarea class="text-input api-origins-input" id="apiAllowedOrigins" rows="4" placeholder="https://app.example.com&#10;http://localhost:5173"></textarea>
+            <small class="field-help">Mỗi dòng một origin đầy đủ, không thêm đường dẫn. Dùng * để cho phép mọi origin (chỉ nên dùng cho API verify public).</small>
+            <button class="button button-primary" type="submit" id="saveApiConfig">Lưu cấu hình kết nối</button>
+          </form>
+          <div class="api-config-note" id="apiConfigNote">Cấu hình hiện tại sẽ được tải từ server sau khi đăng nhập.</div>
+        </article>
+      </div>
+      <article class="panel-card api-howto"><div class="panel-kicker">QUICK CONNECT</div><h3>Địa chỉ API của server này</h3><div class="endpoint"><span>POST</span><code id="apiAbsoluteUrl">Đang lấy địa chỉ...</code><button class="copy-button" id="copyApiAbsolute" type="button">COPY URL</button></div><div class="code-head"><span>REQUEST BODY</span><button class="copy-button" data-copy='{"key":"TAS-YOUR-KEY","deviceId":"PC-001"}'>COPY JSON</button></div><pre><code>{
+  "key": "TAS-YOUR-KEY",
+  "deviceId": "PC-001"
+}</code></pre><p class="muted">Máy khác trong LAN: bật chế độ LAN, mở TCP port đang hiển thị trong cửa sổ khởi chạy ở Windows Firewall và dùng IP LAN của máy chạy server. Truy cập Internet dùng URL PUBLIC do launcher tạo qua HTTPS Tunnel. URL thay đổi khi khởi động tunnel mới.</p></article>
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>API VERSION 2.0</span></footer>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div class="page-heading"><div><div class="section-kicker">SYSTEM CONFIGURATION</div><h1>CÀI ĐẶT <span>SERVER</span></h1><p>Thiết lập thông tin chạy server và các giới hạn vận hành.</p></div></div>
+      <div class="settings-grid">
+        <article class="panel-card"><div class="panel-kicker">SERVER</div><h3>Thông tin kết nối</h3><div class="setting-row"><span>Địa chỉ nội bộ</span><b id="localServerAddress">Đang xác định cổng...</b></div><div class="setting-row"><span>Health check</span><code>GET /api/health</code></div><div class="setting-row"><span>Lưu dữ liệu</span><b>data/store.json</b></div><div class="setting-row"><span>Phiên admin</span><b>12 giờ, cookie HttpOnly</b></div></article>
+        <article class="panel-card"><div class="panel-kicker">CAPACITY</div><h3>Quy tắc key & thiết bị</h3><div class="setting-row"><span>Số lượng key</span><b class="green-text">Không đặt trần trong ứng dụng</b></div><div class="setting-row"><span>Thiết bị / key</span><b class="green-text">0 = Không giới hạn</b></div><div class="setting-row"><span>Giới hạn request verify</span><b>180 / phút / IP</b></div><div class="setting-row"><span>Dung lượng request</span><b>64 KB</b></div><div class="hint-box"><b>Lưu ý triển khai</b><span>Dữ liệu JSON phù hợp cho máy chủ nhỏ/vừa. Khi lượng key và request tăng lớn, nên chuyển storage sang PostgreSQL và đặt HTTPS reverse proxy.</span></div></article>
+      </div>
+      <article class="panel-card"><div class="panel-kicker">ADMIN ACCESS</div><h3>Bảo mật tài khoản quản trị</h3><p class="muted">Tài khoản mặc định: <code>ADMIN</code>. Mật khẩu được lưu dạng hash scrypt trong <code>config.json</code>. Không chia sẻ file cấu hình. Khi triển khai Internet, hãy đổi mật khẩu và bật HTTPS với <code>cookieSecure: true</code>.</p></article>
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>SYSTEM SETTINGS</span></footer>
+    </section>
+
+    <section class="page" id="page-activity">
+      <div class="page-heading">
+        <div><div class="section-kicker">ADMIN AUDIT · LIVE ACTIVITY</div><h1>NHẬT KÝ <span>HOẠT ĐỘNG</span></h1><p>Theo dõi các thao tác quản trị và trạng thái hệ thống trong website.</p></div>
+        <div class="activity-heading-actions"><span class="live-chip"><i></i> GHI NHẬN TRÊN SERVER</span><button class="button button-outline button-small" id="refreshActivity" type="button">↻ Làm mới</button></div>
+      </div>
+      <div class="activity-summary-grid">
+        <article class="activity-summary-card"><small>TỔNG SỰ KIỆN ĐÃ LƯU</small><b id="activityTotal">—</b><span>Lưu tối đa 500 sự kiện gần nhất</span></article>
+        <article class="activity-summary-card"><small>HOẠT ĐỘNG HÔM NAY</small><b id="activityToday">—</b><span>Theo giờ máy chủ</span></article>
+        <article class="activity-summary-card"><small>HOẠT ĐỘNG GẦN NHẤT</small><b id="activityLatest">—</b><span id="activityLatestMeta">Chưa có dữ liệu</span></article>
+      </div>
+      <article class="panel-card activity-panel">
+        <div class="activity-toolbar"><div><div class="panel-kicker">AUDIT TRAIL</div><h3>LỊCH SỬ THAO TÁC</h3><p>Mỗi thao tác được ghi sau khi server xử lý thành công. Không lưu mật khẩu, API Token hoặc toàn bộ mã License Key.</p></div><div class="activity-tools"><select class="text-input" id="activityFilter" aria-label="Lọc hoạt động"><option value="all">Tất cả hoạt động</option><option value="license">License Key</option><option value="share">Link chia sẻ</option><option value="account">Tài khoản</option><option value="tool">Công cụ Lua</option><option value="system">Hệ thống</option></select><button class="button button-danger button-small" id="clearActivity" type="button">Xóa nhật ký</button></div></div>
+        <div class="activity-list" id="activityList" aria-live="polite"><div class="activity-empty">Đang tải nhật ký hoạt động...</div></div>
+      </article>
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>PRIVATE ADMIN AUDIT</span></footer>
+    </section>
+
+    <section class="page" id="page-lua-studio">
+      <div class="lua-studio-hero">
+        <div class="lua-studio-hero-copy">
+          <div class="lua-studio-eyebrow"><i></i> TUAN ANH STORE · CREATOR WORKSPACE</div>
+          <h1>LUA <span>STUDIO</span></h1>
+          <p>Thiết kế GUI Roblox có bản xem trước trực tiếp, sửa giao diện và xuất LocalScript. Source được đọc như văn bản; công cụ không chạy mã tải lên.</p>
+        </div>
+        <div class="lua-studio-hero-status"><span class="lua-status-dot"></span> LOCAL DESIGN ENGINE <b>V36</b></div>
+      </div>
+
+      <div class="lua-studio-toolbar">
+        <div class="lua-studio-nav" role="tablist" aria-label="Lua Studio workspace">
+          <button class="lua-studio-nav-btn active" type="button" data-lua-studio-pane="designer"><span>01</span> THIẾT KẾ GUI</button>
+          <button class="lua-studio-nav-btn" type="button" data-lua-studio-pane="source"><span>02</span> SOURCE</button>
+          <button class="lua-studio-nav-btn" type="button" data-lua-studio-pane="decode"><span>03</span> DECODE</button>
+        </div>
+        <div class="lua-studio-toolbar-meta"><span><i></i> PREVIEW REALTIME</span><span>ROBLOX STUDIO · LUAU</span></div>
+      </div>
+
+      <div class="lua-studio-pane active" id="luaStudioDesignerPane" data-lua-studio-content="designer">
+        <div class="lua-studio-designer-grid">
+          <div class="lua-studio-inspector">
+            <article class="panel-card lua-v2-card">
+              <div class="lua-v2-card-head"><div><small>DESIGN SETTINGS</small><h3>THÔNG TIN GIAO DIỆN</h3></div><span class="lua-v2-step">01</span></div>
+              <label class="field-label" for="luaScriptName">TÊN FILE LOCAL SCRIPT</label>
+              <input class="text-input" id="luaScriptName" maxlength="80" value="TuanAnhStore-GUI" placeholder="Ten-script">
+              <div class="lua-v2-two-fields">
+                <label><span>TÊN MENU</span><input class="text-input" id="luaMenuTitle" maxlength="80" value="TuanAnh" placeholder="Tên menu"></label>
+                <label><span>DÒNG PHỤ</span><input class="text-input" id="luaMenuSubtitle" maxlength="120" value="VIP Hub" placeholder="Mô tả"></label>
+                <label><span>VERSION</span><input class="text-input" id="luaMenuVersion" maxlength="12" value="V9"></label>
+                <label><span>TÊN HIỂN THỊ</span><input class="text-input" id="luaMenuUserName" maxlength="40" value="TuanAnh_hotwar"></label>
+                <label><span>NHÓM / ROLE</span><input class="text-input" id="luaMenuUserRole" maxlength="50" value="Premium User"></label>
+                <label><span>CHIỀU RỘNG</span><input class="text-input" id="luaMenuWidth" type="number" min="520" max="1100" step="10" value="620"></label>
+                <label><span>CHIỀU CAO</span><input class="text-input" id="luaMenuHeight" type="number" min="320" max="900" step="10" value="420"></label>
+                <label><span>MÀU VIỀN / ĐIỂM NHẤN</span><input class="lua-color-input" id="luaMenuAccent" type="color" value="#ff96c8"></label>
+                <label><span>MÀU NỀN MENU</span><input class="lua-color-input" id="luaMenuSurface" type="color" value="#0f1117"></label>
+              </div>
+            </article>
+
+            <article class="panel-card lua-v2-card">
+              <div class="lua-v2-card-head"><div><small>MENU STRUCTURE</small><h3>TABS / DANH MỤC</h3></div><span class="lua-v2-step">02</span></div>
+              <div class="lua-v2-inline-actions"><button class="button button-ghost button-small" id="luaLoadMenuPreset" type="button">↻ GUI mẫu</button><button class="button button-outline button-small" id="luaAddTab" type="button">＋ Thêm tab</button></div>
+              <div class="lua-tab-edit-list" id="luaTabEditList"></div>
+            </article>
+
+            <article class="panel-card lua-v2-card">
+              <div class="lua-v2-card-head"><div><small>CONTROLS</small><h3>NÚT / TOGGLE / SLIDER</h3></div><span class="lua-v2-step">03</span></div>
+              <p class="lua-v2-help">Thêm control hiển thị trong menu. Control mẫu chỉ thay đổi trạng thái giao diện, chưa gắn logic gameplay.</p>
+              <button class="button button-outline button-small" id="luaAddAction" type="button">＋ Thêm control</button>
+              <div class="lua-action-list" id="luaActionList"></div>
+              <datalist id="luaFunctionOptions"></datalist>
+              <div class="lua-action-footer"><span id="luaActionSummary">0 control</span><button class="button button-ghost button-small" id="luaRescanActions" type="button">↻ Làm mới</button></div>
+              <div class="lua-source-legacy hidden" aria-hidden="true"><select id="luaReplaceTarget"><option value="">GUI độc lập</option></select><p id="luaReplaceTargetStatus">GUI được xuất độc lập.</p></div>
+            </article>
+
+            <article class="panel-card lua-v2-card">
+              <div class="lua-v2-card-head"><div><small>IMAGE / BRANDING</small><h3>GẮN ẢNH VÀO GUI</h3></div><span class="lua-v2-step">04</span></div>
+              <label class="field-label" for="luaRobloxAssetId">ROBLOX IMAGE ASSET ID</label>
+              <input class="text-input" id="luaRobloxAssetId" inputmode="numeric" maxlength="40" value="95196119848155" placeholder="1234567890 hoặc rbxassetid://ID">
+              <label class="field-label" for="luaImageUrl">LINK ẢNH HTTPS (PREVIEW)</label>
+              <input class="text-input" id="luaImageUrl" type="url" maxlength="1500" placeholder="https://example.com/image.png">
+              <label class="field-label" for="luaImageFile">CHỌN ẢNH TỪ MÁY</label>
+              <input class="text-input lua-file-input" id="luaImageFile" type="file" accept="image/*,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif,.tga">
+              <div class="lua-image-upload-status" id="luaImageStatus" aria-live="polite">Đang dùng logo asset mặc định trong script bạn gửi. Chọn ảnh mới để thay thế.</div>
+              <button class="button button-ghost button-small lua-clear-image" id="clearLuaImage" type="button">Xóa ảnh đã chọn</button>
+              <div class="lua-roblox-upload">
+                <div class="lua-v2-upload-heading"><b>ROBLOX OPEN CLOUD</b><small>UPLOAD ẢNH → LẤY ASSET ID</small></div>
+                <p>API Key chỉ dùng trong yêu cầu upload hiện tại và sẽ được xóa khỏi ô nhập sau khi gửi.</p>
+                <label class="field-label" for="luaRobloxApiKey">OPEN CLOUD API KEY</label>
+                <input class="text-input" id="luaRobloxApiKey" type="password" maxlength="500" autocomplete="off" placeholder="API Key có quyền Assets: Create">
+                <div class="lua-roblox-fields">
+                  <label><span>CREATOR TYPE</span><select class="text-input" id="luaRobloxCreatorType"><option value="user">Tài khoản cá nhân</option><option value="group">Group</option></select></label>
+                  <label><span>USER / GROUP ID</span><input class="text-input" id="luaRobloxCreatorId" inputmode="numeric" maxlength="20" placeholder="ID dạng số"></label>
+                </div>
+                <label class="field-label" for="luaRobloxAssetName">TÊN ASSET</label>
+                <input class="text-input" id="luaRobloxAssetName" maxlength="50" value="Tuan Anh Store Image">
+                <label class="field-label" for="luaRobloxAssetDescription">MÔ TẢ</label>
+                <textarea class="text-input" id="luaRobloxAssetDescription" rows="2" maxlength="1000" placeholder="Mô tả ảnh"></textarea>
+                <label class="lua-auto-upload-option"><input type="checkbox" id="luaRobloxAutoUpload"><span><b>TỰ ĐỘNG UPLOAD SAU KHI CHỌN ẢNH</b><small>Bật khi API Key và Creator ID đã được nhập.</small></span></label>
+                <button class="button button-outline full-button" id="luaRobloxUpload" type="button">⇧ UPLOAD VÀ LẤY ID</button>
+                <div class="lua-roblox-upload-status" id="luaRobloxUploadStatus" aria-live="polite">Nhập API Key, Creator ID và chọn ảnh để upload.</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="lua-studio-preview-column">
+            <article class="panel-card lua-v2-preview-card">
+              <div class="lua-v2-card-head"><div><small>LIVE CANVAS · 1:1 UI PREVIEW</small><h3>BẢN XEM TRƯỚC GUI</h3></div><span class="lua-v2-live"><i></i> LIVE</span></div>
+              <div class="lua-menu-preview lua-menu-preview-large lua-menu-preview-full" id="luaMenuPreview" aria-label="Bản xem trước toàn bộ menu GUI">
+                <aside class="lua-preview-sidebar">
+                  <div class="lua-preview-brand"><div class="lua-preview-avatar-wrap"><img id="luaPreviewImage" class="lua-preview-image hidden" alt="Logo menu"><span id="luaPreviewImageFallback" class="lua-preview-image-fallback">TA</span></div><div class="lua-preview-brand-copy"><b id="luaPreviewTitle">TuanAnh</b><small id="luaPreviewSubtitle">VIP Hub</small></div><span class="lua-preview-version" id="luaPreviewVersion">V9</span></div>
+                  <nav class="lua-preview-tabs" id="luaPreviewTabs" aria-label="Menu tabs"></nav>
+                  <div class="lua-preview-profile"><span class="lua-preview-profile-avatar">TA</span><span><b id="luaPreviewUserName">TuanAnh_hotwar</b><small id="luaPreviewUserRole">Premium User</small></span><i></i></div>
+                </aside>
+                <section class="lua-preview-main">
+                  <header class="lua-preview-windowbar"><div><i></i><i></i><i></i><span>TUAN ANH STORE · LIVE UI</span></div><div class="lua-preview-window-controls"><b>—</b><b>□</b><b>×</b></div></header>
+                  <div class="lua-preview-content-head"><div><small id="luaPreviewTabEyebrow">GENERAL</small><h4 id="luaPreviewTabTitle">GENERAL</h4><p>Thiết kế GUI · Roblox Studio LocalScript</p></div><span id="luaPreviewActionCount">0 mục</span></div>
+                  <div class="lua-preview-actions" id="luaPreviewActions"><div class="lua-preview-empty"><b>GUI CANVAS READY</b><span>Thay đổi cấu hình hoặc thêm control để xem giao diện cập nhật trực tiếp.</span></div></div>
+                  <footer class="lua-preview-statusbar"><span><i></i> TUAN ANH STORE · PREVIEW</span><span id="luaPreviewFooterMeta">V9 · LIVE</span></footer>
+                </section>
+              </div>
+              <div class="lua-v2-preview-foot"><span><i></i> Thay đổi được đồng bộ trực tiếp</span><span>620 × 420 · BASE LAYOUT</span></div>
+            </article>
+
+            <article class="panel-card lua-v2-output-card">
+              <div class="lua-v2-card-head"><div><small>BUILD OUTPUT</small><h3>MAKE LOCAL SCRIPT</h3></div><span class="lua-v2-step">05</span></div>
+              <p class="lua-v2-help">Xuất một LocalScript GUI độc lập cho Roblox Studio. Đặt file trong StarterPlayerScripts hoặc StarterGui. Source được tải lên chỉ là tài liệu tham khảo, không bị ghép vào file xuất.</p>
+              <button class="button button-primary full-button" id="buildLuaScript" type="button">✦ BUILD GUI LUA SCRIPT</button>
+              <div class="form-error" id="luaBuildError" role="alert"></div>
+              <div class="lua-output-heading"><div><small id="luaOutputStatus">Chưa có bản build.</small></div><div class="lua-output-actions"><button class="button button-outline button-small" id="copyLuaOutput" type="button" disabled>⧉ Sao chép</button><button class="button button-primary button-small" id="downloadLuaOutput" type="button" disabled>↓ Tải .lua</button></div></div>
+              <textarea class="text-input lua-code-output" id="luaOutputCode" spellcheck="false" readonly rows="12" placeholder="-- LocalScript sẽ xuất hiện ở đây..."></textarea>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="lua-studio-pane" id="luaStudioSourcePane" data-lua-studio-content="source">
+        <div class="lua-source-workbench">
+          <article class="panel-card lua-v2-card lua-source-file-card">
+            <div class="lua-v2-card-head"><div><small>READ / INSPECT</small><h3>ĐỌC SOURCE LUA</h3></div><span class="lua-v2-step">SRC</span></div>
+            <p class="lua-v2-help">Tải hoặc dán mã Lua để xem và phân tích tĩnh. Không thực thi source. Khi bấm Build, Studio chỉ xuất GUI từ phần thiết kế.</p>
+            <label class="lua-dropzone" for="luaSourceFile"><span class="lua-drop-icon">⇧</span><b>Kéo file .lua vào đây hoặc bấm để chọn</b><small id="luaFileName">Hỗ trợ .lua / .txt · tối đa 5 MB</small><input id="luaSourceFile" type="file" accept=".lua,.txt,text/plain" hidden></label>
+            <div class="lua-source-meta"><span id="luaSourceStats">0 ký tự · 0 dòng</span><button class="button button-ghost button-small" id="clearLuaSource" type="button">Xóa source</button></div>
+            <div class="lua-source-safety"><b>STATIC ONLY</b><span>Không loadstring, không thực thi, không gọi HTTP từ mã người dùng.</span></div>
+          </article>
+          <article class="panel-card lua-v2-card lua-source-editor-card">
+            <div class="lua-v2-card-head"><div><small>CODE EDITOR</small><h3>SOURCE EDITOR</h3></div><span class="lua-v2-step">LUA</span></div>
+            <textarea class="text-input lua-code-editor" id="luaSourceCode" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="-- Dán source Lua của bạn tại đây..." rows="30"></textarea>
+            <div class="lua-v2-editor-note">Nội dung được xử lý trong trình duyệt. Tối đa 5 MB.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="lua-studio-pane" id="luaStudioDecodePane" data-lua-studio-content="decode">
+        <div class="lua-decode-heading">
+          <div><div class="lua-studio-eyebrow"><i></i> STATIC LUA ANALYZER</div><h2>DECODE <span>WORKSPACE</span></h2><p>Dán đoạn Lua bị mã hóa hoặc obfuscate để thử giải các lớp phổ biến mà không thực thi mã.</p></div>
+          <span class="lua-decode-badge">NO EXECUTION · LOCAL ONLY</span>
+        </div>
+        <div class="lua-decode-grid">
+          <article class="panel-card lua-v2-card">
+            <div class="lua-v2-card-head"><div><small>INPUT</small><h3>MÃ LUA ĐẦU VÀO</h3></div><span class="lua-v2-step">01</span></div>
+            <textarea class="text-input lua-decode-editor" id="luaDecodeInput" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Dán code Lua bị mã hóa tại đây..." rows="24"></textarea>
+            <div class="lua-decode-actions"><button class="button button-primary" id="luaDecodeRun" type="button">✦ DECODE STATIC</button><button class="button button-ghost" id="luaDecodeClear" type="button">Xóa</button></div>
+            <small class="field-help">Hỗ trợ một số kiểu: string.char số, escape Lua, chuỗi đảo ngược và Base64 nằm trong loadstring cố định.</small>
+          </article>
+          <article class="panel-card lua-v2-card">
+            <div class="lua-v2-card-head"><div><small>RESULT</small><h3>MÃ SAU PHÂN TÍCH</h3></div><span class="lua-v2-step">02</span></div>
+            <div class="lua-decode-report" id="luaDecodeReport" aria-live="polite">Chưa có kết quả. Nhập mã ở khung bên trái rồi bấm Decode Static.</div>
+            <textarea class="text-input lua-decode-editor lua-decode-output" id="luaDecodeOutput" spellcheck="false" readonly placeholder="Kết quả giải mã sẽ hiển thị ở đây..." rows="24"></textarea>
+            <div class="lua-decode-actions"><button class="button button-outline" id="luaDecodeCopy" type="button" disabled>Sao chép kết quả</button><button class="button button-ghost" id="luaDecodeDownload" type="button" disabled>Tải .lua</button></div>
+          </article>
+        </div>
+        <div class="lua-decode-limits"><b>Giới hạn kỹ thuật</b><span>Không thể khôi phục chắc chắn mã gốc từ bytecode, VM obfuscator, mã hóa có khóa hoặc code tải payload từ máy chủ. Khi gặp trường hợp đó, Studio sẽ ghi rõ phần chưa giải được; không tự chạy payload để thử giải.</span></div>
+      </div>
+
+      <footer class="footer"><span>© 2026 TUAN ANH STORE</span><span>LUA STUDIO V36 · GUI DESIGN / STATIC DECODE</span></footer>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="loginModal" aria-hidden="true">
+    <form class="modal login-modal" id="loginForm" autocomplete="off">
+      <button class="modal-close" type="button" data-close="loginModal" aria-label="Đóng">×</button>
+      <img class="modal-logo" src="/assets/tuan-anh-store-mark.webp" alt="Logo anime đỏ đen Tuấn Anh Store"><div class="section-kicker">ADMIN ACCESS</div><h2>ĐĂNG NHẬP HỆ THỐNG</h2><p>Đăng nhập Admin để quản lý License Key, API và tạo link mời truy cập website.</p>
+      <label class="field-label" for="adminUsername">TÀI KHOẢN ADMIN</label><input class="text-input" id="adminUsername" type="text" placeholder="Nhập ADMIN" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+      <label class="field-label" for="adminPassword">MẬT KHẨU ADMIN</label><input class="text-input" id="adminPassword" type="password" placeholder="Nhập mật khẩu admin" autocomplete="new-password" required>
+      <button class="button button-primary full-button" type="submit" id="loginSubmit">Đăng nhập hệ thống →</button><div class="form-error" id="loginError" role="alert"></div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop" id="createModal" aria-hidden="true">
+    <form class="modal create-key-modal advanced-key-modal" id="createForm" autocomplete="off">
+      <button class="modal-close" type="button" data-close="createModal" aria-label="Đóng">×</button>
+      <div class="advanced-key-heading"><div class="advanced-key-symbol">⚿</div><div><h2>Tạo Mã License Key Nâng Cao</h2><small>ADVANCED LICENSE GENERATOR</small></div></div>
+
+      <section class="key-live-preview" aria-live="polite">
+        <div class="key-preview-heading"><span>MẪU KEY SẼ TẠO (LIVE PREVIEW)</span><b id="keyPreviewCount">16 KÝ TỰ</b></div>
+        <code id="keyPreviewCode">TAS-XXXX-XXXX-XXXX</code>
+      </section>
+
+      <div class="advanced-key-grid two-col">
+        <div class="advanced-field">
+          <label class="field-label" for="keyApp">CHỌN ỨNG DỤNG (*)</label>
+          <select class="text-input" id="keyApp" required>
+            <option value="TA-STORE-VN">TA-STORE-VN</option>
+            <option value="Tuấn Anh Store Client">Tuấn Anh Store Client</option>
+            <option value="Custom">Ứng dụng khác...</option>
+          </select>
+          <input class="text-input hidden" id="keyAppCustom" maxlength="80" placeholder="Nhập tên ứng dụng" style="margin-top:7px">
+        </div>
+        <div class="advanced-field">
+          <label class="field-label" for="keyQuantity">SỐ LƯỢNG KEY CẦN TẠO</label>
+          <input class="text-input" id="keyQuantity" type="number" min="1" max="500" step="1" value="100" required>
+        </div>
+      </div>
+
+      <div class="advanced-key-grid duration-row">
+        <div class="advanced-field duration-amount-field">
+          <label class="field-label" for="keyExpiryAmount">THỜI HẠN BẢN QUYỀN (*)</label>
+          <input class="text-input" id="keyExpiryAmount" type="number" min="1" max="36500" step="1" value="30" required>
+        </div>
+        <div class="advanced-field duration-unit-field">
+          <label class="field-label" for="keyExpiryUnit">ĐƠN VỊ THỜI HẠN</label>
+          <select class="text-input" id="keyExpiryUnit">
+            <option value="days">Ngày (Days)</option>
+            <option value="hours">Giờ (Hours)</option>
+            <option value="permanent">Vĩnh viễn</option>
+          </select>
+        </div>
+      </div>
+      <div class="advanced-expiry-presets" aria-label="Chọn nhanh thời hạn">
+        <button type="button" data-key-duration="1h">1 Giờ</button>
+        <button type="button" data-key-duration="3h">3 Giờ</button>
+        <button type="button" data-key-duration="12h">12 Giờ</button>
+        <button type="button" data-key-duration="1d">1 Ngày</button>
+        <button type="button" data-key-duration="7d">7 Ngày</button>
+        <button type="button" data-key-duration="30d" class="selected">30 Ngày</button>
+        <button type="button" data-key-duration="permanent">Vĩnh Viễn</button>
+      </div>
+      <div class="key-duration-note" id="keyDurationNote">◉ Thời hạn chỉ bắt đầu tính từ lúc key được kích hoạt lần đầu.</div>
+
+      <div class="advanced-key-grid prefix-row">
+        <div class="advanced-field">
+          <label class="field-label" id="keyPrefixLabel" for="keyPrefix">TIỀN TỐ (PREFIX)</label>
+          <input class="text-input" id="keyPrefix" maxlength="36" value="TAS-" placeholder="TA-STORE-VN" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        </div>
+        <div class="advanced-field key-length-field">
+          <label class="field-label" for="keyLength">ĐỘ DÀI (KÝ TỰ)</label>
+          <div class="key-length-line"><input class="text-input" id="keyLength" type="number" min="4" max="80" step="1" value="16"><label class="key-random-toggle"><input type="checkbox" id="keyRandomize" checked><span>TỰ RANDOM</span></label></div>
+          <small class="field-help" id="keyRandomHelp">Bật “Tự Random” = hệ thống tự sinh phần ký tự còn lại.</small>
+        </div>
+      </div>
+
+      <div class="advanced-key-grid two-col role-note-row">
+        <div class="advanced-field">
+          <label class="field-label" for="keyLevel">LEVEL PHÂN QUYỀN</label>
+          <input class="text-input" id="keyLevel" type="number" min="1" max="1000" step="1" value="1">
+        </div>
+        <div class="advanced-field">
+          <label class="field-label" for="keyNote">GHI CHÚ ĐƠN HÀNG / KHÁCH</label>
+          <input class="text-input" id="keyNote" maxlength="250" placeholder="VD: Khách Zalo, Batch 01...">
+        </div>
+      </div>
+
+      <label class="key-hwid-option"><input type="checkbox" id="keyHwidLock" checked><span><b>Khoá HWID</b> — mỗi key chỉ log được trên 1 máy</span></label>
+      <div class="key-hwid-note">Khi bật, server giới hạn mỗi key ở 1 thiết bị kích hoạt. Có thể gỡ thiết bị trong phần quản lý key.</div>
+      <div class="form-error" id="createError" role="alert"></div>
+      <div class="advanced-key-actions"><button class="button button-outline" type="button" data-close="createModal">Hủy</button><button class="button button-primary" type="submit" id="createSubmit">⚡ Sinh Key Ngay</button></div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop" id="editKeyModal" aria-hidden="true">
+    <form class="modal edit-key-modal" id="editKeyForm" autocomplete="off">
+      <button class="modal-close" type="button" data-close="editKeyModal" aria-label="Đóng">×</button>
+      <div class="section-kicker">LICENSE SETTINGS</div>
+      <h2>CHỈNH SỬA LICENSE KEY</h2>
+      <p>Cập nhật tên key, số thiết bị và thời điểm hết hạn. Thay đổi được lưu trực tiếp trên server.</p>
+      <input type="hidden" id="editKeyId">
+      <div class="edit-key-summary">
+        <span class="edit-summary-icon">⌘</span>
+        <div><small>MÃ LICENSE ĐANG CHỈNH</small><code id="editKeyCode">—</code></div>
+        <span class="edit-current-status" id="editKeyStatus">ĐANG HOẠT ĐỘNG</span>
+      </div>
+      <div class="form-two edit-fields-grid">
+        <div>
+          <label class="field-label" for="editKeyName">TÊN KEY</label>
+          <input class="text-input" id="editKeyName" maxlength="100" required>
+        </div>
+        <div>
+          <label class="field-label" for="editKeyDevices">GIỚI HẠN THIẾT BỊ</label>
+          <input class="text-input" id="editKeyDevices" type="number" min="0" max="1000000" step="1" inputmode="numeric" required>
+          <small class="field-help">0 = Không giới hạn thiết bị</small>
+        </div>
+      </div>
+      <div class="expiry-editor-block">
+        <div class="expiry-editor-heading"><div><label class="field-label" for="editExpiryMode">THIẾT LẬP HẠN SỬ DỤNG</label><small>Chọn cách cập nhật thời hạn của key.</small></div><span class="expiry-lock-icon">◷</span></div>
+        <div class="current-expiry-card"><span>THỜI HẠN HIỆN TẠI</span><b id="editCurrentExpiry">Đang tải...</b><small id="editCurrentExpiryNote">Giữ nguyên nếu bạn không muốn thay đổi.</small><strong id="editCurrentExpiryRemaining" class="expiry-remaining-chip">Đang tính thời gian còn lại…</strong></div>
+        <input type="hidden" id="editExpiryMode" value="keep">
+        <div class="expiry-mode-grid edit-expiry-mode-grid" role="group" aria-label="Chọn cách thay đổi thời hạn">
+          <button type="button" class="expiry-mode-card is-selected" data-edit-expiry-mode="keep" aria-pressed="true"><span class="expiry-mode-icon">✓</span><b>Giữ nguyên</b><small>Không đổi hạn</small></button>
+          <button type="button" class="expiry-mode-card" data-edit-expiry-mode="days" aria-pressed="false"><span class="expiry-mode-icon">＋</span><b>Gia hạn</b><small>Cộng thêm ngày</small></button>
+          <button type="button" class="expiry-mode-card" data-edit-expiry-mode="date" aria-pressed="false"><span class="expiry-mode-icon">▣</span><b>Ngày cụ thể</b><small>Đặt mốc mới</small></button>
+          <button type="button" class="expiry-mode-card" data-edit-expiry-mode="never" aria-pressed="false"><span class="expiry-mode-icon">∞</span><b>Vĩnh viễn</b><small>Bỏ thời hạn</small></button>
+        </div>
+        <div id="editExpiryDaysWrap" class="expiry-option hidden">
+          <label class="field-label" for="editExpiryDays">SỐ NGÀY GIA HẠN</label>
+          <input class="text-input" id="editExpiryDays" type="number" min="1" max="36500" step="1" value="30" inputmode="numeric">
+          <div class="expiry-presets edit-expiry-presets" aria-label="Chọn nhanh thời hạn">
+            <button type="button" data-edit-expiry-days="1">1 ngày</button>
+            <button type="button" data-edit-expiry-days="7">7 ngày</button>
+            <button type="button" data-edit-expiry-days="30" class="selected">30 ngày</button>
+            <button type="button" data-edit-expiry-days="90">90 ngày</button>
+            <button type="button" data-edit-expiry-days="365">365 ngày</button>
+          </div>
+          <small class="field-help" id="editExpiryBaseNote">Nếu key còn hạn, số ngày được cộng từ ngày hết hạn hiện tại. Nếu đã hết hạn hoặc không giới hạn, tính từ bây giờ.</small>
+        </div>
+        <div id="editExpiryDateWrap" class="expiry-option hidden">
+          <label class="field-label" for="editExpiryDate">NGÀY / GIỜ HẾT HẠN MỚI</label>
+          <input class="text-input" id="editExpiryDate" type="datetime-local" step="60">
+          <small class="field-help">Giờ theo múi giờ trên máy bạn. Ngày mới phải ở tương lai.</small>
+        </div>
+        <div id="editExpiryNeverWrap" class="expiry-never-note hidden"><span>∞</span><div><b>Key sẽ không tự hết hạn</b><small>Key vẫn có thể bị ban, giới hạn thiết bị hoặc xóa bởi Admin.</small></div></div>
+        <div class="expiry-preview" id="editExpiryPreview" aria-live="polite"><span>SAU KHI LƯU</span><b>Thời hạn hiện tại sẽ được giữ nguyên.</b><small id="editExpiryPreviewMeta">Không thay đổi dữ liệu hết hạn.</small></div>
+      </div>
+      <div class="form-error" id="editKeyError" role="alert"></div>
+      <div class="edit-modal-actions"><button class="button button-ghost" type="button" data-close="editKeyModal">Hủy</button><button class="button button-primary" type="submit" id="editKeySubmit">Lưu thay đổi <span>→</span></button></div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop" id="detailModal" aria-hidden="true">
+    <div class="modal detail-modal"><button class="modal-close" type="button" data-close="detailModal">×</button><div class="section-kicker">LICENSE DETAILS</div><h2>THIẾT BỊ ĐÃ KÍCH HOẠT</h2><p id="detailSubtitle">Danh sách thiết bị đã xác thực bằng key này.</p><div class="device-list" id="deviceList"></div></div>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+</body>
+</html>
